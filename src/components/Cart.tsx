@@ -2,7 +2,12 @@
 import { PrismaClient } from "@prisma/client/extension";
 import { useState } from "react";
 
-export const Cart = () => {
+export const Cart = ({menu}: {menu:    
+    {
+        id: number;
+        name: string;
+        price: number;  
+    }[]}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
    
   const toggleDropdown = () => {

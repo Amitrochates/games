@@ -24,7 +24,7 @@ export const SetupComponent = ({number, type, menu}: {number: number, type: stri
              </div>
                
              <div className="z-40 pl-9">
-                <Cart />
+                <Cart menu={menu}/>
             </div>
             </div>
             <div className="flex flex-col justify-between">
