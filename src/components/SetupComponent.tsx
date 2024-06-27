@@ -23,7 +23,7 @@ export const SetupComponent = ({number, type, menu}: {number: number, type: stri
                 
              </div>
                
-             <div className="z-40 pl-9">
+             <div className="">
                 <Cart menu={menu}/>
             </div>
             </div>
