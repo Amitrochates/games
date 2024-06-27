@@ -6,8 +6,8 @@ export default async function (){
 
   
     const prisma = new PrismaClient()
-     const setups = await prisma.setup.findMany()
-        const menu = await prisma.menu.findMany()
+    const setups = await prisma.setup.findMany()
+    const menu = await prisma.menu.findMany()
         
     
     console.log(setups)
