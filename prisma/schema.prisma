@@ -21,17 +21,12 @@ model Setup {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  Menu        Menu[]
 }
 
 model Menu {
   id          Int      @id @default(autoincrement())
   name        String
   price       Float
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  screenNo    Int
-  Setup       Setup    @relation(fields: [screenNo], references: [screenNo])
 }
 
 
