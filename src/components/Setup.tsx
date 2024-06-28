@@ -4,7 +4,8 @@ import IconGameController from "./IconGameController"
 import Timer from "./Timer"
 
 export const Setup = () =>{
-    return <div className="flex justify-center rounded-lg m-5 p-5">
+    return (
+        <div className="flex justify-center rounded-lg m-5 p-5">
             <div className="flex flex-col">
                 <div className="flex">
                     <div><IconGameController/></div>
@@ -38,6 +39,5 @@ export const Setup = () =>{
                 </div>
             </div>
         </div>
-        
-  
+        )
 }

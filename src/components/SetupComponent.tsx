@@ -11,16 +11,16 @@ export const SetupComponent = ({number, type, menu}: {number: number, type: stri
     return <div className="flex justify-center rounded-lg border-blue-600 h-max-sm border-4 m-5 p-5">
             <div className="flex flex-col ">
                 <div className="flex justify-between m-5">
-                <div>Screen {number}</div>
-                <div>Type -{type}</div>
+                <div>Screen - {number}</div>
+                <div>Type - {type}</div>
                 </div>
             
                 <div className="flex border-blue-600 p-5 max-w-lg w-full">
                 
-                <div className="text-slate-300 hover:text-green-100"><IconGameController/></div>
-                <div className="text-slate-300 hover:text-green-100"><IconGameController/></div>
-                <div className="text-slate-300 hover:text-green-100"><IconGameController/></div>
-                <div className="text-slate-300 hover:text-green-100"><IconGameController/></div>
+                <div className="text-slate-300 hover:text-green-200"><IconGameController/></div>
+                <div className="text-slate-300 hover:text-green-200"><IconGameController/></div>
+                <div className="text-slate-300 hover:text-green-200"><IconGameController/></div>
+                <div className="text-slate-300 hover:text-green-200"><IconGameController/></div>
                 
              </div>
                

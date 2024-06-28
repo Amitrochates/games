@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from 'react';
 
@@ -7,7 +7,7 @@ function Timer(props: React.SVGProps<SVGSVGElement>) {
   const [isSetting, setIsSetting] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  const handleIconClick = () => setIsSetting(true);
+  const handleIconClick = () => setIsSetting(!isSetting);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value);
 
@@ -35,15 +35,14 @@ function Timer(props: React.SVGProps<SVGSVGElement>) {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="size-6"
+        className="w-6 h-6 cursor-pointer"
         onClick={handleIconClick}
-        style={{ cursor: 'pointer' }}
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
       </svg>
 
       {isSetting && (
-        <div>
+        <div className="mt-2">
           <input
             type="number"
             value={inputValue}
@@ -58,7 +57,7 @@ function Timer(props: React.SVGProps<SVGSVGElement>) {
       )}
 
       {time > 0 && (
-        <div>
+        <div className="mt-2">
           <p>Time left: {time} minutes</p>
         </div>
       )}
