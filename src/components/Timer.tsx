@@ -66,3 +66,5 @@ function Timer(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default Timer;
+
+
