@@ -1,6 +1,7 @@
 
 import { PrismaClient } from "@prisma/client";
 import { SetupComponent } from "@/components/SetupComponent";
+import { ActivityCard } from "@/components/ActivityCard";
 
 export default async function (){
 
@@ -15,10 +16,19 @@ export default async function (){
     return <div>
         <div className="grid grid-cols-4">
         {setups.map(setup => (
-           <SetupComponent number={setup.screenNo} type={setup.systemType} menu={menu}/>
+           <ActivityCard number={setup.screenNo} type={setup.systemType} menu={menu}/>
            
       ))}
+
+     
+      {/* {setups.map(setup => (
+           <ActivityCard number={setup.screenNo} type={setup.systemType} menu={menu}/>
+           
+      ))} */}
+      
+      
+        </div>
         </div>
         
-    </div>
+   
 }
