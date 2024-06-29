@@ -12,7 +12,7 @@ function IconGameController(props: React.SVGProps<SVGSVGElement>) {
 
   {if(controllerStates)
     return (
-      <div onClick={toggleController} className="text-green-800"> 
+      <div onClick={toggleController} className="text-red-600"> 
         <svg
           viewBox="0 0 512 512"
           fill="currentColor"
