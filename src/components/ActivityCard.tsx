@@ -1,6 +1,9 @@
 import { Countdown } from "./Countdown";
 import IconGameController from "./IconGameController";
 import { ProgressBarComponent } from "./ProgressBarComponent";
+
+
+
 export const ActivityCard = ({number, type, menu}: {number: number, type: string, menu:    
     {
         id: number;
@@ -36,12 +39,7 @@ export const ActivityCard = ({number, type, menu}: {number: number, type: string
                 </div>
                 <div className="flex pl-2 pt-2">
                         <div><Countdown/></div>
-                        {/* <div className="pl-5 pt-1"> 
-                            <div className="flex items-start justify-center">
-                                    <div className="text-black rounded-lg p-1 m-1 w-5 h-7 text-xs  bg-gray-100"><button>+30m</button></div>
-                                    <div className="text-black rounded-lg p-1 m-1 w-5 h-7 text-xs bg-gray-100"><button>+ 1h</button></div>
-                            </div>
-                        </div> */}
+
                 </div>
                 
             
