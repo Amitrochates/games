@@ -1,11 +1,12 @@
 "use client"
 
 import React from 'react';
-import useTimer from './Timer';  
 
-export const Countdown = () => {
-  const { time, addTime } = useTimer();
-
+interface CountdownProps {
+  time: { hours: number; minutes: number; seconds: number }
+  addTime: (seconds: number) => void
+}
+export const Countdown: React.FC<CountdownProps> = ({ time, addTime }) => {
   return (
     <div className="flex items-start justify-center w-full gap-1 count-down-main">
       <div className="timer w-7">
