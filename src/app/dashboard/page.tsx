@@ -6,7 +6,14 @@ export default async function (){
 
   
     const prisma = new PrismaClient()
-    const setups = await prisma.setup.findMany()
+    const setups = 
+        [{
+          "id": 1,
+          "screenNo": 5,
+          "systemType": "PS4",
+          "hourlyRate": 90
+        }]
+      
     const menu = await prisma.menu.findMany()
         
     
@@ -14,7 +21,7 @@ export default async function (){
     
     return <div>
         <div className="grid grid-cols-4">
-        {setups.map(setup => (
+        {setups.map((setup: { screenNo: number; systemType: string; }) => (
            <ActivityCard number={setup.screenNo} type={setup.systemType} menu={menu}/>
            
       ))}
