@@ -1,23 +1,30 @@
-"use client"
-
-
+"use client";
 import axios from 'axios';
 import React from 'react';
 
 interface CountdownProps {
-  time: { hours: number; minutes: number; seconds: number }
-  addTime: (seconds: number) => void
+  time: { hours: number; minutes: number; seconds: number };
+  addTime: (seconds: number) => void;
 }
-export const Countdown: React.FC<CountdownProps> = ({ time, addTime }) => {
 
- 
-const handler = async () =>{
-  addTime(3600);
-  const response = await axios.post("http://localhost:3000/api/session")
-  console.log(response)
-}
+export const Countdown: React.FC<CountdownProps> = ({ time, addTime }) => {
+  const handler = async (seconds:number) => {
+    addTime(seconds);
+  try{
+      const response = await axios.post("http://localhost:3000/api/session",{
+        seconds,
+      });
+      console.log(response);
+    } 
+  catch (e) {
+      console.log(e);
+    }
+  };
+  const handleButtonClick = (seconds: number) => {
+    handler(seconds);
+  };
   return (
-    <div className="flex items-start justify-center w-full gap-1 count-down-main">
+     <div className="flex items-start justify-center w-full gap-1 count-down-main">
       <div className="timer w-7">
         <div className="bg-gray-700 py-1 px-1 rounded-lg overflow-hidden border border-gray-500">
           <div className="countdown-element hours font-Cormorant font-semibold text-sm text-red-500 text-center">
@@ -48,7 +55,7 @@ const handler = async () =>{
       <div className="timer w-7">
         <button
           className="bg-black text-white py-1 px-1 rounded-lg border border-gray-500 w-full"
-          onClick={() => {handler}}
+          onClick={() => handleButtonClick(3600)}
         >
           <div className="countdown-element hours font-Cormorant font-semibold text-sm text-center">
             +1
@@ -60,7 +67,7 @@ const handler = async () =>{
       <div className="timer w-10">
         <button
           className="bg-black text-white py-1 px-1 rounded-lg border border-gray-500 w-full"
-          onClick={handler}
+          onClick={() => handleButtonClick(1800)}
         >
           <div className="countdown-element hours font-Cormorant font-semibold text-sm text-center">
             +30
