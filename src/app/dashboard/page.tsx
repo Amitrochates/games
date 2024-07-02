@@ -17,7 +17,7 @@ export default async function (){
     const menu = await prisma.menu.findMany()
         
     
-    console.log(setups)
+    //console.log(setups)
     
     return <div>
         <div className="grid grid-cols-4">

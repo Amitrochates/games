@@ -1,5 +1,7 @@
 "use client"
 
+
+import axios from 'axios';
 import React from 'react';
 
 interface CountdownProps {
@@ -7,6 +9,13 @@ interface CountdownProps {
   addTime: (seconds: number) => void
 }
 export const Countdown: React.FC<CountdownProps> = ({ time, addTime }) => {
+
+ 
+const handler = async () =>{
+  addTime(3600);
+  const response = await axios.post("http://localhost:3000/api/session")
+  console.log(response)
+}
   return (
     <div className="flex items-start justify-center w-full gap-1 count-down-main">
       <div className="timer w-7">
@@ -39,7 +48,7 @@ export const Countdown: React.FC<CountdownProps> = ({ time, addTime }) => {
       <div className="timer w-7">
         <button
           className="bg-black text-white py-1 px-1 rounded-lg border border-gray-500 w-full"
-          onClick={() => addTime(3600)}
+          onClick={() => {handler}}
         >
           <div className="countdown-element hours font-Cormorant font-semibold text-sm text-center">
             +1
@@ -51,7 +60,7 @@ export const Countdown: React.FC<CountdownProps> = ({ time, addTime }) => {
       <div className="timer w-10">
         <button
           className="bg-black text-white py-1 px-1 rounded-lg border border-gray-500 w-full"
-          onClick={() => addTime(1800)}
+          onClick={handler}
         >
           <div className="countdown-element hours font-Cormorant font-semibold text-sm text-center">
             +30

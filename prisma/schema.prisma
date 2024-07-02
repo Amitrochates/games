@@ -17,16 +17,29 @@ model Setup {
   id          Int      @id @default(autoincrement())
   screenNo    Int      @unique  
   systemType  String   
-  hourlyRate  Float
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
+  price       Price?   @relation(fields: [systemType], references: [systemType])
+   sessions    Session[] 
 }
-
+model Price{
+  id Int @id @default(autoincrement())
+  systemType String @unique
+  baseRate Int
+  addRate Int
+  setups Setup[]  
+}
 model Menu {
   id          Int      @id @default(autoincrement())
   name        String
   price       Float
+}
+
+model Session{
+  id Int @id @default(autoincrement())
+  screenNo Int
+  startAt DateTime @default(now())
+  endAt DateTime
+  totalAmount Int
+  setup       Setup    @relation(fields: [screenNo], references: [screenNo])
 }
 
 
