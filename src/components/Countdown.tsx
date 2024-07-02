@@ -12,8 +12,9 @@ export const Countdown: React.FC<CountdownProps> = ({ time, addTime }) => {
 
  
 const handler = async () =>{
-  addTime(3600);
+  
   const response = await axios.post("http://localhost:3000/api/session")
+  addTime(3600);
   console.log(response)
 }
   return (
