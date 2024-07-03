@@ -17,9 +17,9 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
   const { time, addTime, progress } = useTimer();
 
   
-  const generateBillHandler = async (id: number) => {
+  const generateBillHandler = async (menuBill:number, id: number) => {
     try {
-        const response = await generateBill(id);
+        const response = await generateBill(menuBill, id);
         console.log(response);
 
         if (response.success) {
@@ -34,8 +34,8 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
         alert('An error occurred while generating the bill.');
     }
 };
-const handleBillButtonClick = (id: number) => {
-    generateBillHandler(id);
+const handleBillButtonClick = (menuBill:number, id: number) => {
+    generateBillHandler(menuBill, id);
 };
 const [menuBill, setMenuBill] = useState(0);
   return (
@@ -77,7 +77,9 @@ const [menuBill, setMenuBill] = useState(0);
               </ul>
             </div>
             <div className="p-2 m-2">
-            <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={() => handleBillButtonClick(id)}>
+            <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg
+             shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg
+              text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={() => handleBillButtonClick(menuBill, id)}>
              Bill
             </button>
             </div>

@@ -44,7 +44,7 @@ export const setTime = async (id:number, seconds:number) => {
 }
 
 
-export const generateBill = async (id: number) => {
+export const generateBill = async (menuBill:number, id: number) => {
     const prisma = new PrismaClient;
     try {
         const session = await prisma.session.findFirst({
@@ -84,12 +84,13 @@ export const generateBill = async (id: number) => {
                 totalAmount += (priceDetails.baseRate / 2) * halfHours;
             }
         }
+        totalAmount += menuBill;
     await prisma.session.update({
         where: { id: session.id },
     data: { totalAmount, active: false }
         });
 
-        return { success: true, billAmount: totalAmount };
+        return { success: true, foodBill:menuBill, billAmount: totalAmount };
     } catch (error) {
         console.error('Error generating bill:', error);
         return { success: false, error: 'Internal server error' };
