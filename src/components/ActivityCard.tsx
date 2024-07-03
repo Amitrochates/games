@@ -1,10 +1,12 @@
 "use client"
 
 import React from 'react';
+import { useState } from 'react';
 import { Countdown } from "./Countdown";
 import IconGameController from "./IconGameController";
 import { ProgressBarComponent } from "./ProgressBarComponent";
 import useTimer from './Timer';
+import { Menuitem } from './Menuitem';
 
 export const ActivityCard = ({ id, number, type, menu }: { id:number, number: number, type: string, menu: {
   id: number;
@@ -12,9 +14,9 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
   price: number;
 }[] }) => {
   const { time, addTime, progress } = useTimer();
-  
+  const [menuBill, setMenuBill] = useState(0);
   return (
-    <div className="m-2 p-4 bg-gray-900 rounded-3xl">
+    <div className="m-2 p-4 bg-gray-900 rounded-3xl w-auto">
       <div className="grid grid-cols-3">
         <div className="flex flex-col justify-evenly col-span-2">
           <div className="flex mx-2 rounded-2xl bg-gray-700 border border-gray-500 px-2">
@@ -46,8 +48,9 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
         <div className="row-span-1">
           <div className="flex flex-col">
             <div>
-              <ul className="overflow-y-auto text-sm font-medium h-36 text-gray-200 bg-gray-700 border border-gray-500 rounded-2xl mt-5">
-                {menu.map((item) => (<li key={item.id} className="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">{item.name}</li>))}
+            <ul className="overflow-y-auto text-sm font-medium h-36 w-auto text-gray-200 bg-gray-700 border border-gray-500 rounded-2xl mt-5">
+                {menu.map(item => (
+                  <Menuitem key={item.id} menuBill={menuBill} setMenuBill={setMenuBill} {...item} />))}
               </ul>
             </div>
             <div className="p-2 m-2">

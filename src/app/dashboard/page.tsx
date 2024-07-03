@@ -14,7 +14,7 @@ export default async function (){
     //console.log(setups)
     
     return <div>
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-3">
         {setups.map((setup: { id:number; screenNo: number; systemType: string; }) => (
            <ActivityCard id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu}/>
            
