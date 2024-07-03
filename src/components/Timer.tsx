@@ -29,6 +29,11 @@ const [initialTotalTime, setInitialTotalTime] = useState(0)
       return newTime;
     })
   };
+  const resetTime = () => {
+    setTime(0);
+    setProgress(0);
+    setInitialTotalTime(0);
+  };
 
   const formatTime = (totalSeconds: number) => {
     const hours = Math.floor(totalSeconds /3600);
@@ -36,6 +41,6 @@ const [initialTotalTime, setInitialTotalTime] = useState(0)
     const seconds = totalSeconds %60;
   return { hours, minutes, seconds }
   };
-return { time: formatTime(time), addTime, progress};
+return { time: formatTime(time), addTime, progress, resetTime};
 };
 export default useTimer;

@@ -14,8 +14,9 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
   name: string;
   price: number;
 }[] }) => {
-  const { time, addTime, progress } = useTimer();
-
+  const { time, addTime, progress, resetTime } = useTimer();
+  const [menuBill, setMenuBill] = useState(0);
+  const [controllerCount, setControllerCount] = useState(0);
   
   const generateBillHandler = async (controllerCount:number, menuBill:number, id: number) => {
     try {
@@ -24,6 +25,7 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
 
         if (response.success) {
             alert(`Total amount: ${response.billAmount}`);
+            resetTime();
         } 
         else {
             alert(`Failed to generate bill: ${response.error}`);
@@ -38,11 +40,10 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
     
     generateBillHandler(controllerCount, menuBill, id);
 };
-const [menuBill, setMenuBill] = useState(0);
-const [controllerCount, setControllerCount] = useState(0);
+
 
   return (
-    <div className="m-2 p-4 bg-gray-900 rounded-3xl w-auto">
+    <div className=" border m-2 p-4 bg-gray-900 rounded-3xl w-auto">
       <div className="grid grid-cols-3">
         <div className="flex flex-col justify-evenly col-span-2">
           <div className="flex mx-2 rounded-2xl bg-gray-700 border border-gray-500 px-2">
@@ -92,3 +93,6 @@ const [controllerCount, setControllerCount] = useState(0);
     </div>
   );
 }
+
+
+
