@@ -44,7 +44,7 @@ export const setTime = async (id:number, seconds:number) => {
 }
 
 
-export const generateBill = async (menuBill:number, id: number) => {
+export const generateBill = async (controllerCount:number,menuBill:number, id: number) => {
     const prisma = new PrismaClient;
     try {
         const session = await prisma.session.findFirst({
