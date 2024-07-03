@@ -1,5 +1,5 @@
 "use client";
-import { startTime } from '@/app/actions/session';
+import { setTime } from '@/app/actions/session';
 import React from 'react';
 
 interface CountdownProps {
@@ -9,12 +9,13 @@ interface CountdownProps {
 }
 
 export const Countdown: React.FC<CountdownProps> = ({ id, time, addTime }) => {
-  
+
   const handler = async ( id: number, seconds:number) => {
     addTime(seconds);
   try{
-      const response = await startTime(id, seconds)
+      const response = await setTime( id, seconds)
       console.log(response);
+
     } 
   catch (e) {
       console.log(e);
