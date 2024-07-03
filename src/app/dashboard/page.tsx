@@ -21,14 +21,10 @@ export default async function (){
     
     return <div>
         <div className="grid grid-cols-4">
-        {setups.map((setup: { screenNo: number; systemType: string; }) => (
-           <ActivityCard number={setup.screenNo} type={setup.systemType} menu={menu}/>
+        {setups.map((setup: { id:number; screenNo: number; systemType: string; }) => (
+           <ActivityCard id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu}/>
            
       ))}
-
-     
-   
-      
       
         </div>
         </div>

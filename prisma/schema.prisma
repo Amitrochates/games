@@ -35,11 +35,11 @@ model Menu {
 
 model Session{
   id Int @id @default(autoincrement())
-  screenNo Int
+  setupId Int
   startAt DateTime @default(now())
   endAt DateTime
   totalAmount Int
-  setup       Setup    @relation(fields: [screenNo], references: [screenNo])
+  setup       Setup    @relation(fields: [setupId], references: [id])
 }
 
 

@@ -6,13 +6,13 @@ import IconGameController from "./IconGameController";
 import { ProgressBarComponent } from "./ProgressBarComponent";
 import useTimer from './Timer';
 
-export const ActivityCard = ({ number, type, menu }: { number: number, type: string, menu: {
+export const ActivityCard = ({ id, number, type, menu }: { id:number, number: number, type: string, menu: {
   id: number;
   name: string;
   price: number;
 }[] }) => {
   const { time, addTime, progress } = useTimer();
-
+  
   return (
     <div className="m-2 p-4 bg-gray-900 rounded-3xl">
       <div className="grid grid-cols-3">
@@ -40,7 +40,7 @@ export const ActivityCard = ({ number, type, menu }: { number: number, type: str
             </div>
           </div>
           <div className="flex pl-2 pt-2">
-            <Countdown time={time} addTime={addTime} />
+            <Countdown id={id} time={time} addTime={addTime} />
           </div>
         </div>
         <div className="row-span-1">
