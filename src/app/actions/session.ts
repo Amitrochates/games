@@ -42,3 +42,57 @@ export const setTime = async (id:number, seconds:number) => {
          return ({message: "session created id:" + session.id})
     }
 }
+
+
+export const generateBill = async (id: number) => {
+    const prisma = new PrismaClient;
+    try {
+        const session = await prisma.session.findFirst({
+            where: {
+                setupId: id,
+                active: true
+            },
+            include: { setup: true }
+        });
+
+        if (!session) {
+            return { success: false, error: 'Active session not found' };
+        }
+        const priceDetails = await prisma.price.findUnique({
+            where: { systemType: session.setup.systemType }
+        });
+        if (!priceDetails) {
+            return { success: false, error:'Price details not found' };
+        }
+     const startAt = new Date(session.startAt);
+    const endAt = new Date(session.endAt);
+        const durationInSeconds = (endAt.getTime() - startAt.getTime()) /1000;
+        const baseDuration =3600; 
+        const halfHourDuration =1800; 
+
+        let totalAmount = 0;
+
+        if (durationInSeconds <= halfHourDuration) {
+            totalAmount = priceDetails.baseRate /2;
+        } 
+    else {
+            const fullHours = Math.floor(durationInSeconds /baseDuration);
+            const remainingSeconds = durationInSeconds %baseDuration;
+            const halfHours = Math.ceil(remainingSeconds /halfHourDuration);
+            totalAmount = fullHours * priceDetails.baseRate;
+            if (halfHours >0) {
+                totalAmount += (priceDetails.baseRate / 2) * halfHours;
+            }
+        }
+    await prisma.session.update({
+        where: { id: session.id },
+    data: { totalAmount, active: false }
+        });
+
+        return { success: true, billAmount: totalAmount };
+    } catch (error) {
+        console.error('Error generating bill:', error);
+        return { success: false, error: 'Internal server error' };
+    }
+};
+
