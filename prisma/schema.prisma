@@ -35,10 +35,11 @@ model Menu {
 
 model Session{
   id Int @id @default(autoincrement())
-  setupId Int
-  startAt DateTime @default(now())
-  endAt DateTime
+  setupId Int @unique
+  startAt DateTime? 
+  endAt DateTime?
   totalAmount Int
+  active Boolean @default(false)
   setup       Setup    @relation(fields: [setupId], references: [id])
 }
 
