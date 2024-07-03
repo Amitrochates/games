@@ -5,6 +5,7 @@ import { Countdown } from "./Countdown";
 import IconGameController from "./IconGameController";
 import { ProgressBarComponent } from "./ProgressBarComponent";
 import useTimer from './Timer';
+import { generateBill } from '@/app/actions/session';
 
 export const ActivityCard = ({ id, number, type, menu }: { id:number, number: number, type: string, menu: {
   id: number;
@@ -12,7 +13,29 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
   price: number;
 }[] }) => {
   const { time, addTime, progress } = useTimer();
+
   
+  const generateBillHandler = async (id: number) => {
+    try {
+        const response = await generateBill(id);
+        console.log(response);
+
+        if (response.success) {
+            alert(`Total amount: ${response.billAmount}`);
+        } 
+        else {
+            alert(`Failed to generate bill: ${response.error}`);
+        }
+    }
+    catch (e) {
+        console.error('Error:', e);
+        alert('An error occurred while generating the bill.');
+    }
+};
+const handleBillButtonClick = (id: number) => {
+    generateBillHandler(id);
+};
+
   return (
     <div className="m-2 p-4 bg-gray-900 rounded-3xl">
       <div className="grid grid-cols-3">
@@ -51,9 +74,9 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
               </ul>
             </div>
             <div className="p-2 m-2">
-              <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br 
-              focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg
-               dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Bill</button>
+            <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={() => handleBillButtonClick(id)}>
+             Bill
+            </button>
             </div>
           </div>
         </div>
