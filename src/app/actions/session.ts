@@ -11,7 +11,7 @@ export const startTime = async (id:number, seconds:number) => {
     const endAt = new Date(startAt.getTime() + seconds * 1000);
     const session = await prisma.session.create({
         data:{
-        setupId: 2,
+        setupId: id,
         startAt: startAt,
         endAt: endAt,
         totalAmount: 0

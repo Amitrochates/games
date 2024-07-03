@@ -6,14 +6,7 @@ export default async function (){
 
   
     const prisma = new PrismaClient()
-    const setups = 
-        [{
-          "id": 1,
-          "screenNo": 5,
-          "systemType": "PS4",
-          "hourlyRate": 90
-        }]
-      
+    const setups = await prisma.setup.findMany()  
     const menu = await prisma.menu.findMany()
         
     
