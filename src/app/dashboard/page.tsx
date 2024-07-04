@@ -12,20 +12,21 @@ export default async function (){
     const menu = await prisma.menu.findMany()
         
     
-    return <div className="bg-black h-screen">
-      <div className="h-screen w-full min-h-screen bg-black">
-      <div className="">
-        <TopBar/>
+    return (
+      <div className="bg-black h-screen w-screen overflow-hidden">
+        <div className="h-full w-full bg-black flex flex-col">
+          <div>
+            <TopBar />
+          </div>
+          <div className="flex-grow grid grid-cols-3 gap-6">
+            {setups.map((setup: { id: number; screenNo: number; systemType: string; }) => (
+              <ActivityCard key={setup.id} id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu} />
+            ))}
+          </div>
+        </div>
       </div>
-        <div className="grid grid-cols-3 gap-6" >
-        {setups.map((setup: { id:number; screenNo: number; systemType: string; }) => (
-           <ActivityCard id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu}/>
-           
-      ))}
-      
-        </div>
-        </div>
-        </div>
+    );
+    
         
    
 }
