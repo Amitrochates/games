@@ -34,7 +34,7 @@ export const IconGameController: React.FC<ControllerProps> = ({ controllerCount,
  
   if(controllerStates){
     return (
-      <div onClick={handleDeActivate} className={"text-green-600 hover:text-green-200 mx-2"}> 
+      <div onClick={handleDeActivate} className={"text-red-600  hover:text-red-200 mx-2"}> 
         <svg
           viewBox="0 0 512 512"
           fill="currentColor"
@@ -49,7 +49,7 @@ export const IconGameController: React.FC<ControllerProps> = ({ controllerCount,
     );}
     else{
     return (
-      <div onClick={handleActivate} className={" text-slate-300 hover:text-green-200 mx-2"}> 
+      <div onClick={handleActivate} className={" text-slate-300 hover:text-red-200 mx-2"}> 
         <svg
           viewBox="0 0 512 512"
           fill="currentColor"
