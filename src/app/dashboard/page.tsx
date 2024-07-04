@@ -13,19 +13,23 @@ export default async function (){
         
     
     return (
-      <div className="bg-black h-screen w-screen overflow-hidden">
-        <div className="h-full w-full bg-black flex flex-col">
+      <div className="bg-black min-h-screen w-screen">
+        <div className="min-h-screen w-full bg-black flex flex-col">
           <div>
             <TopBar />
           </div>
-          <div className="flex-grow grid grid-cols-3 gap-6">
-            {setups.map((setup: { id: number; screenNo: number; systemType: string; }) => (
-              <ActivityCard key={setup.id} id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu} />
-            ))}
+          <div className="flex-grow overflow-auto">
+            <div className="grid grid-cols-3 gap-6">
+              {setups.map((setup: { id: number; screenNo: number; systemType: string; }) => (
+                <ActivityCard key={setup.id} id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
     );
+    
+    
     
         
    
