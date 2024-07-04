@@ -11,8 +11,8 @@ export default async function (){
     const menu = await prisma.menu.findMany()
         
     
-    return <div>
-        <div className="grid grid-cols-3 bg-black ">
+    return <div className="h-full w-full min-h-screen " style={{ backgroundColor: '#000000' }}>
+        <div className="grid grid-cols-3 gap-6 " >
         {setups.map((setup: { id:number; screenNo: number; systemType: string; }) => (
            <ActivityCard id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu}/>
            
