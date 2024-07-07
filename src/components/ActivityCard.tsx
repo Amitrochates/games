@@ -68,11 +68,13 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
             </div>
             
           </div>
-          <div className="flex  border border-red-500   rounded-2xl p-1 m-1 mx-2 px-2  ">
-            <div className=""><IconGameController  controllerCount={controllerCount} setControllerCount={setControllerCount} /></div>
-            <div className=""><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount}/></div>
-            <div className=""><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount}/></div>
-            <div className=""><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount}/></div>
+          <div className="border border-red-500 rounded-2xl p-2 m-2 mx-2 px-2">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-4">
+              <div className="flex justify-center"><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount} /></div>
+              <div className="flex justify-center"><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount} /></div>
+              <div className="flex justify-center"><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount} /></div>
+              <div className="flex justify-center"><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount} /></div>
+            </div>
           </div>
           <div className="grid grid-cols-8">
             <div className="col-span-8">
@@ -106,7 +108,4 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
     </div>
   );
 }
-
-
-
   
