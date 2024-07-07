@@ -1,4 +1,5 @@
 "use client"
+import { useEffect } from "react";
 import { useState } from "react";
 interface MenuItem {
   id: number;
@@ -8,18 +9,25 @@ interface MenuItem {
 interface MenuitemProps extends MenuItem {
     setMenuBill: React.Dispatch<React.SetStateAction<number>>;
     menuBill: number;
+    freshstate: number; 
+    setFreshState:  React.Dispatch<React.SetStateAction<number>>;
   }
 
-export const Menuitem: React.FC<MenuitemProps> = ({ id, name, price, setMenuBill, menuBill }) => {    
-    
+export const Menuitem: React.FC<MenuitemProps> = ({ id, name, price, setMenuBill, menuBill, freshstate, setFreshState }) => {    
 const [counter, setCounter] = useState(0);
+useEffect(() => {
+  if(counter != 0)
+    setFreshState(0)
+  if(freshstate == 1)
+    setCounter(0);
+}, [freshstate, counter]);
 const handleIncrement = () => {
     setCounter(prevCounter => prevCounter + 1);
     setMenuBill(prevMenuBill => {
       const newMenuBill = prevMenuBill + price;
-      
       return newMenuBill;
     });
+    
   };
 
   const handleDecrement = () => {
@@ -27,10 +35,11 @@ const handleIncrement = () => {
       setCounter(prevCounter => prevCounter - 1);
       setMenuBill(prevMenuBill => {
         const newMenuBill = prevMenuBill - price;
-        
         return newMenuBill;
       });
+      
     }
+    
   };
 
 
@@ -41,9 +50,6 @@ const handleIncrement = () => {
           <li key={id} className="w-full px-4 py-2 border-b border-gray-500 rounded-t-lg ">
             <div className="flex justify-between">
                 <div className="w-10">{name}</div>
-
-
-
                 <div className="ml-2">
                     <div className="flex items-center justify-between md:order-3 md:justify-end">
                         <div className="flex items-center">

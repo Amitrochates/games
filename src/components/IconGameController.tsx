@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 interface ControllerProps {
@@ -12,6 +12,10 @@ export const IconGameController: React.FC<ControllerProps> = ({ controllerCount,
     
   
   const [controllerStates, setControllerStates] = useState(false);
+  useEffect(() => {
+    if(controllerCount == 0)
+      setControllerStates(false);
+  }, [controllerCount]);
 
   const handleActivate = () => {
     setControllerStates(true);

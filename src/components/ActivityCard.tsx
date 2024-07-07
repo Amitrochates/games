@@ -17,15 +17,22 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
   const { time, addTime, progress, resetTime } = useTimer();
   const [menuBill, setMenuBill] = useState(0);
   const [controllerCount, setControllerCount] = useState(0);
-  
+  const [freshstate, setFreshState] = useState<number>(1);
+ 
   const generateBillHandler = async (controllerCount:number, menuBill:number, id: number) => {
     try {
+
         const response = await generateBill(controllerCount, menuBill, id);
+        setControllerCount(0);
+        setFreshState(1);
         console.log(response);
+       
 
         if (response.success) {
             alert(`Total amount: ${response.billAmount}`);
             resetTime();
+            
+
         } 
         else {
             alert(`Failed to generate bill: ${response.error}`);
@@ -42,10 +49,11 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
 };
 
 
+
   return (
-    <div className="border m-2 p-4 rounded-3xl w-auto 
-      relative rounded-2xl border border-transparent
-     border-red-500 shadow-[0_0_2px_rgba(255,0,0,0.6),0_0_20px_rgba(255,0,0,0.4),0_0_30px_rgba(255,0,0,0.3)_inset,0_0_50px_rgba(255,0,0,0.3)_inset]  rounded-2xl p-1 m-1 mx-2 px-2  ">
+    <div className=" m-2   w-auto 
+      relative border border-transparent
+     border-red-500 shadow-[0_0_2px_rgba(255,0,0,0.6),0_0_20px_rgba(255,0,0,0.4),0_0_30px_rgba(255,0,0,0.3)_inset,0_0_50px_rgba(255,0,0,0.3)_inset]  rounded-2xl p-1 mx-2 px-2  ">
       <div className="grid grid-cols-3">
         <div className="flex flex-col justify-evenly col-span-2">
           <div className="flex  border border-gray-500  rounded-2xl p-1 m-1 mx-2 px-2 " >
@@ -68,10 +76,12 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
           </div>
           <div className="grid grid-cols-8">
             <div className="col-span-8">
-              <ProgressBarComponent progress={progress} />
+            
+             <ProgressBarComponent progress={progress} />
             </div>
           </div>
           <div className="flex pl-2 pt-2">
+          
             <Countdown id={id} time={time} addTime={addTime} />
           </div>
         </div>
@@ -80,7 +90,7 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
             <div>
             <ul className="overflow-y-auto text-sm font-medium h-36 w-auto text-gray-200 bg-black border border-gray-500 rounded-2xl mt-5">
                 {menu.map(item => (
-                  <Menuitem key={item.id} menuBill={menuBill} setMenuBill={setMenuBill} {...item} />))}
+                  <Menuitem key={item.id} menuBill={menuBill} setMenuBill={setMenuBill} freshstate={freshstate} setFreshState={setFreshState} {...item} />))}
               </ul>
             </div>
             <div className="p-2 m-2">
@@ -99,3 +109,4 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
 
 
 
+  
