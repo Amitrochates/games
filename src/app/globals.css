@@ -3,6 +3,25 @@
 *::-webkit-scrollbar {
     width: 20px;
   }
+  /* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000;  /* Dark grey */
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #000;  /* Slightly lighter grey */
+}
+
+::-webkit-scrollbar-track {
+  background: #000;  /* Black */
+}
+
 @tailwind components;
 @tailwind utilities;
 

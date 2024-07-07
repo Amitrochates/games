@@ -43,21 +43,24 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
 
 
   return (
-    <div className=" border m-2 p-4 bg-gray-900 rounded-3xl w-auto">
+    <div className="border m-2 p-4 rounded-3xl w-auto 
+      relative rounded-2xl border border-transparent
+     border-red-500 shadow-[0_0_2px_rgba(255,0,0,0.6),0_0_20px_rgba(255,0,0,0.4),0_0_30px_rgba(255,0,0,0.3)_inset,0_0_50px_rgba(255,0,0,0.3)_inset]  rounded-2xl p-1 m-1 mx-2 px-2  ">
       <div className="grid grid-cols-3">
         <div className="flex flex-col justify-evenly col-span-2">
-          <div className="flex mx-2 rounded-2xl bg-gray-700 border border-gray-500 px-2">
-            <div className="text-red-400 mt-2 text-3xl">
+          <div className="flex  border border-gray-500  rounded-2xl p-1 m-1 mx-2 px-2 " >
+            <div className="text-white mt-2 text-3xl ">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z" />
               </svg>
             </div>
-            <div className="text-red-400 text-2xl pr-2 pl-1 mt-1">{number}</div>
+            <div className="text-white text-2xl pr-2 pl-1 mt-1">{number}</div>
             <div className="my-2 mx-5 text-white rounded-lg">
               <div className="text-sm p-1">{type}</div>
             </div>
+            
           </div>
-          <div className="flex bg-gray-700 border border-gray-500 rounded-2xl p-1 m-1 mx-2 px-2">
+          <div className="flex  border border-red-500   rounded-2xl p-1 m-1 mx-2 px-2  ">
             <div className=""><IconGameController  controllerCount={controllerCount} setControllerCount={setControllerCount} /></div>
             <div className=""><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount}/></div>
             <div className=""><IconGameController controllerCount={controllerCount} setControllerCount={setControllerCount}/></div>
@@ -75,7 +78,7 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
         <div className="row-span-1">
           <div className="flex flex-col">
             <div>
-            <ul className="overflow-y-auto text-sm font-medium h-36 w-auto text-gray-200 bg-gray-700 border border-gray-500 rounded-2xl mt-5">
+            <ul className="overflow-y-auto text-sm font-medium h-36 w-auto text-gray-200 bg-black border border-gray-500 rounded-2xl mt-5">
                 {menu.map(item => (
                   <Menuitem key={item.id} menuBill={menuBill} setMenuBill={setMenuBill} {...item} />))}
               </ul>
