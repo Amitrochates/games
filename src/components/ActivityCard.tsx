@@ -58,6 +58,8 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
 
   useEffect(() => {
     const totalSeconds = time.hours * 3600 + time.minutes * 60 + time.seconds;
+    console.log('totalSeconds:', totalSeconds, 'timerStarted:', timerStarted, 'toastShownRef.current:', toastShownRef.current);
+  
     if (totalSeconds === 600 && timerStarted && !toastShownRef.current) {
       toast.info(`Time remaining at screen ${number} is 10 minutes.`, {
         autoClose: 20000,
@@ -65,8 +67,9 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
       });
       playNotificationSound();
       toastShownRef.current = true;
-
+      console.log('10 minutes notification shown');
     }
+  
     if (totalSeconds === 0 && timerStarted && !toastShownRef.current) {
       toast.info(`Time up at screen ${number}.`, {
         autoClose: 20000,
@@ -74,12 +77,15 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
       });
       playNotificationSound();
       toastShownRef.current = true;
-
+      console.log('Time up notification shown');
     }
+  
     if (totalSeconds > 600) {
       toastShownRef.current = false;
+      console.log('Resetting toastShownRef');
     }
   }, [time, number, timerStarted]);
+  
 
   const handleBillButtonClick = (controllerCount: number, menuBill: number, id: number) => {
     generateBillHandler(controllerCount, menuBill, id);
