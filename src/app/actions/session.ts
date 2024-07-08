@@ -68,7 +68,7 @@ try {
     const startAt = new Date(session.startAt);
     const endAt = new Date(session.endAt);
     const durationInHours = ((endAt.getTime() - startAt.getTime()) / 3600000);
-    const totalAmount = durationInHours * (priceDetails.baseRate + (controllerCount-1)*priceDetails.addRate) + menuBill 
+    const totalAmount = durationInHours * (priceDetails.baseRate + (controllerCount? controllerCount-1 : 0)*priceDetails.addRate) + menuBill 
         
     await prisma.session.update({
         where: { id: session.id },
@@ -82,3 +82,29 @@ try {
     }
 };
 
+export const fetchTime = async (id: number): Promise<number> => {
+    const prisma = new PrismaClient();
+    try {
+      const session = await prisma.session.findFirst({
+        where: {
+          setupId: id,
+          active: true
+        }
+      });
+      console.log(session);
+  
+      if (session) {
+        const startAt = new Date(session.startAt);
+        const endAt = new Date(session.endAt);
+        const currentTime = new Date();
+        const remainingTimeInSeconds = Math.max(0, (endAt.getTime() - currentTime.getTime()) / 1000);
+        
+        return Math.round(remainingTimeInSeconds);
+      }
+  
+      return 0; 
+    } catch (error) {
+      console.error('Error fetching session time:', error);
+      throw error; 
+    }
+  };
