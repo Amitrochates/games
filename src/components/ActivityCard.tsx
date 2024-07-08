@@ -20,7 +20,8 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
  
   const generateBillHandler = async (controllerCount: number, menuBill: number, id: number) => {
     try {
-
+      playNotificationSound()
+      toast.info('hi')
         const response = await generateBill(controllerCount, menuBill, id);
         setControllerCount(0);
         setFreshState(1);
