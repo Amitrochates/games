@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 const useTimer = (initialTime = 0) => {
-  const [time, setTime] = useState(initialTime);  
+const [time, setTime] = useState(initialTime);  
 const [progress, setProgress] = useState(0)
 const [initialTotalTime, setInitialTotalTime] = useState(0)
 
@@ -14,11 +14,16 @@ const [initialTotalTime, setInitialTotalTime] = useState(0)
   }, [time, initialTotalTime])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(prevTime => (prevTime > 0 ? prevTime - 1 : 0))
-    }, 1000);
-    return () => clearInterval(interval)
-  }, []);
+    if (time > 0) {
+      const interval = setInterval(() => {
+        setTime(prevTime => {
+          const newTime = prevTime - 1;
+          return newTime > 0 ? newTime : 0;
+        });
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [time]);
 
   const addTime = (seconds:number) => {
     setTime(prevTime => {
@@ -41,6 +46,6 @@ const [initialTotalTime, setInitialTotalTime] = useState(0)
     const seconds = totalSeconds %60;
   return { hours, minutes, seconds }
   };
-return { time: formatTime(time), addTime, progress, resetTime};
+return { time: formatTime(time), addTime, progress, resetTime, initialTotalTime};
 };
 export default useTimer;

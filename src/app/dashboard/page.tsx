@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { ActivityCard } from "@/components/ActivityCard";
 import { TopBar } from "@/components/TopBar";
+import { ToastContainer } from "react-toastify";
 
 export default async function () {
   const prisma = new PrismaClient();
@@ -18,6 +19,7 @@ export default async function () {
             {setups.map((setup: { id: number; screenNo: number; systemType: string; }) => (
               <ActivityCard key={setup.id} id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu} />
             ))}
+            <ToastContainer />
           </div>
         </div>
       </div>

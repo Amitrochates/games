@@ -24,8 +24,8 @@ export const Countdown: React.FC<CountdownProps> = ({ id, time, addTime }) => {
   };
 
   return (
-    <div className="flex items-start justify-center w-full gap-1 count-down-main flex-wrap sm:flex-nowrap">
-      <div className="timer w-7 sm:w-10 md:w-12 lg:w-14 xl:w-16">
+    <div className=" pl-7 flex items-start justify-center w-full gap-1 count-down-main flex-wrap sm:flex-nowrap">
+      <div className="timer gap-2 w-7 sm:w-10 md:w-12 lg:w-14 xl:w-16">
         <div className="bg-gray-700 py-1 px-1 rounded-lg overflow-hidden border border-gray-500">
           <div className="countdown-element hours font-Cormorant font-semibold text-sm text-red-500 text-center">
             {time.hours}
@@ -74,6 +74,17 @@ export const Countdown: React.FC<CountdownProps> = ({ id, time, addTime }) => {
           </div>
         </button>
         <p className="text-xs font-Cormorant font-medium text-white mt-1 text-center w-full">min</p>
+      </div>
+      <div className="timer w-7 sm:w-10 md:w-12 lg:w-14 xl:w-16">
+        <button
+          className="bg-black text-white py-1 px-1 rounded-lg border border-gray-500 w-full"
+          onClick={() => handleButtonClick(id, 900)}
+        >
+          <div className="countdown-element hours font-Cormorant font-semibold text-sm text-center">
+            +15
+          </div>
+        </button>
+        <p className="text-xs font-Cormorant font-medium text-white mt-1 text-center w-full">Min</p>
       </div>
     </div>
   );
