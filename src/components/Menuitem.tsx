@@ -18,8 +18,9 @@ const [counter, setCounter] = useState(0);
 useEffect(() => {
   if(counter != 0)
     setFreshState(0)
-  if(freshstate == 1)
+  if(freshstate == 1){
     setCounter(0);
+    setMenuBill(0);}
 }, [freshstate, counter]);
 const handleIncrement = () => {
     setCounter(prevCounter => prevCounter + 1);
