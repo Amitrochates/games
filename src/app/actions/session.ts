@@ -68,7 +68,7 @@ try {
     const startAt = new Date(session.startAt);
     const endAt = new Date(session.endAt);
     const durationInHours = ((endAt.getTime() - startAt.getTime()) / 3600000);
-    const totalAmount = durationInHours * (priceDetails.baseRate + (controllerCount-1)*priceDetails.addRate) + menuBill 
+    const totalAmount = durationInHours * (priceDetails.baseRate + (controllerCount? controllerCount-1 : 0)*priceDetails.addRate) + menuBill 
         
     await prisma.session.update({
         where: { id: session.id },

@@ -1,13 +1,31 @@
 "use client"
 
+import { fetchTime } from '@/app/actions/session';
 import { useState, useEffect } from 'react';
 
-const useTimer = (initialTime = 0) => {
+const useTimer = ( id:number) => {
+  const initialTime = 0
 const [time, setTime] = useState(initialTime);  
 const [progress, setProgress] = useState(0)
 const [initialTotalTime, setInitialTotalTime] = useState(0)
 
-  useEffect(() => {
+
+useEffect(() => {
+  const initializeTime = async () => {
+    try {
+      const fetchedTime = await fetchTime(id);
+      if (fetchedTime > 0) {
+        setTime(fetchedTime);
+        setInitialTotalTime(fetchedTime);
+      }
+    } catch (error) {
+      console.error('Error fetching initial time:', error);
+    }
+  };
+
+  initializeTime();
+}, [id]);
+useEffect(() => {
     if (initialTotalTime >0) {
     setProgress((time /initialTotalTime)*100)
     }

@@ -21,7 +21,7 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
     try {
         const response = await generateBill(controllerCount, menuBill, id);
         console.log(response);
-
+        
         if (response.success) {
             alert(`Total amount: ${response.billAmount}`);
             resetTimer();
@@ -41,11 +41,12 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
     toastShownRef.current = false;
   };
 
-  useEffect(() => {
-    if (time.hours === 0 && time.minutes === 0 && time.seconds === 0 && timerStarted) {
-      generateBillHandler(controllerCount, menuBill, id);
-    }
-  }, [time, timerStarted, controllerCount, menuBill, id]);
+  // useEffect(() => {
+  //   if (time.hours === 0 && time.minutes === 0 && time.seconds === 0 && timerStarted) {
+  //     shadowColor = "shadow-[0_0_2px_rgba(255,165,0,0.6),0_0_20px_rgba(255,165,0,0.4),0_0_30px_rgba(255,165,0,0.3)_inset,0_0_50px_rgba(255,165,0,0.3)_inset]"
+
+  //   }
+  // }, [time, timerStarted]);
 
   useEffect(() => {
     const totalSeconds = time.hours * 3600 + time.minutes * 60 + time.seconds;
@@ -54,7 +55,18 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
         autoClose: 20000,
         position: 'top-right',
       });
+      playNotificationSound();
       toastShownRef.current = true;
+
+    }
+    if (totalSeconds === 0 && timerStarted && !toastShownRef.current) {
+      toast.info(`Time up at screen ${number}.`, {
+        autoClose: 20000,
+        position: 'top-right',
+      });
+      playNotificationSound();
+      toastShownRef.current = true;
+
     }
     if (totalSeconds > 600) {
       toastShownRef.current = false;
@@ -69,11 +81,14 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
     if (!timerStarted) setTimerStarted(true);
   };
 
-  
+  const playNotificationSound = () => {
+    const audio = new Audio('/10min.wav');
+    audio.play();
+  };
   return (
-    <div className="border m-2 p-4 rounded-3xl w-auto 
-      relative rounded-2xl border border-transparent
-     border-red-500 shadow-[0_0_2px_rgba(255,0,0,0.6),0_0_20px_rgba(255,0,0,0.4),0_0_30px_rgba(255,0,0,0.3)_inset,0_0_50px_rgba(255,0,0,0.3)_inset]  rounded-2xl p-1 m-1 mx-2 px-2  ">
+    <div className="m-2 p-4 rounded-3xl w-auto 
+      relative border border-transparent
+     border-red-500 shadow-[0_0_2px_rgba(255,0,0,0.6),0_0_20px_rgba(255,0,0,0.4),0_0_30px_rgba(255,0,0,0.3)_inset,0_0_50px_rgba(255,0,0,0.3)_inset]   mx-2 px-2  ">
       <div className="grid grid-cols-3">
         <div className="flex flex-col justify-evenly col-span-2">
           <div className="flex  border border-gray-500  rounded-2xl p-1 m-1 mx-2 px-2 " >
