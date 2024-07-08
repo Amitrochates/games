@@ -20,8 +20,7 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
  
   const generateBillHandler = async (controllerCount: number, menuBill: number, id: number) => {
     try {
-      playNotificationSound()
-      toast.info('hi')
+      
         const response = await generateBill(controllerCount, menuBill, id);
         setControllerCount(0);
         setFreshState(1);
@@ -60,7 +59,7 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
     const totalSeconds = time.hours * 3600 + time.minutes * 60 + time.seconds;
     console.log('totalSeconds:', totalSeconds, 'timerStarted:', timerStarted, 'toastShownRef.current:', toastShownRef.current);
   
-    if (totalSeconds === 600 && timerStarted && !toastShownRef.current) {
+    if (totalSeconds === 840 && timerStarted && !toastShownRef.current) {
       toast.info(`Time remaining at screen ${number} is 10 minutes.`, {
         autoClose: 20000,
         position: 'top-right',
