@@ -8,7 +8,9 @@ import { ProgressBarComponent } from "./ProgressBarComponent";
 import useTimer from './Timer';
 import { Menuitem } from './Menuitem';
 import { generateBill } from '@/app/actions/session';
+import { toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
 export const ActivityCard = ({ id, number, type, menu }: { id:number, number: number, type: string, menu: {
   id: number;
   name: string;
@@ -25,6 +27,7 @@ export const ActivityCard = ({ id, number, type, menu }: { id:number, number: nu
         const response = await generateBill(controllerCount, menuBill, id);
         setControllerCount(0);
         setFreshState(1);
+        toast("hi")
         console.log(response);
        
 
@@ -48,7 +51,15 @@ const handleBillButtonClick = (controllerCount:number, menuBill:number, id: numb
     generateBillHandler(controllerCount, menuBill, id);
 };
 
+if (progress === 95) {
+  setTimeout(() => {
+    notif();
+  }, 2000);
+}
 
+const notif = () => {
+  toast(`10 minutes remaining on screen ${number}`);
+};
 
   return (
     <div className=" m-2   w-auto 

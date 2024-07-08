@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
-  
   },
   "dependencies": {
     "@prisma/client": "^5.16.1",
@@ -18,7 +17,8 @@
     "prisma": "^5.16.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-progressbar-fancy": "^1.1.4"
+    "react-progressbar-fancy": "^1.1.4",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@types/node": "^20",
