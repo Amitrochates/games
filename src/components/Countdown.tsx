@@ -52,7 +52,7 @@ export const Countdown: React.FC<CountdownProps> = ({ id, time, addTime }) => {
         <p className="text-xs font-Cormorant font-medium text-white mt-1 text-center w-full">S</p>
       </div>
 
-      <div className="timer w-7 sm:w-10 md:w-12 lg:w-14 xl:w-16">
+      {/* <div className="timer w-7 sm:w-10 md:w-12 lg:w-14 xl:w-16">
         <button
           className="bg-black text-white py-1 px-1 rounded-lg border border-gray-500 w-full"
           onClick={() => handleButtonClick(id, 3600)}
@@ -85,7 +85,7 @@ export const Countdown: React.FC<CountdownProps> = ({ id, time, addTime }) => {
           </div>
         </button>
         <p className="text-xs font-Cormorant font-medium text-white mt-1 text-center w-full">Min</p>
-      </div>
+      </div> */}
     </div>
   );
 };

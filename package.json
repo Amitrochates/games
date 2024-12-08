@@ -11,14 +11,24 @@
   },
   "dependencies": {
     "@prisma/client": "^5.16.1",
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.32",
     "axios": "^1.7.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "express": "^4.19.2",
+    "framer-motion": "^11.11.17",
+    "gsap": "^3.12.5",
+    "lucide-react": "^0.462.0",
     "next": "14.2.4",
     "prisma": "^5.16.1",
     "react": "^18",
     "react-dom": "^18",
     "react-progressbar-fancy": "^1.1.4",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "react-use": "^17.5.1",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -91,7 +91,7 @@ export const fetchTime = async (id: number): Promise<number> => {
           active: true
         }
       });
-      console.log(session);
+      
   
       if (session) {
         const startAt = new Date(session.startAt);
@@ -108,3 +108,92 @@ export const fetchTime = async (id: number): Promise<number> => {
       throw error; 
     }
   };
+
+  export const setOrder = async (sessionId: number, itemId: number, qty: number) => {
+    const prisma = new PrismaClient();
+
+    try {
+       
+        const existingOrder = await prisma.order.findFirst({
+            where: {
+                sessionId: sessionId,
+            },
+        });
+
+        if (!existingOrder) {
+            
+            await prisma.order.create({
+                data: {
+                    sessionId: sessionId,
+                    itemId: itemId,
+                    qty: qty,
+                },
+            });
+
+            return { message: "Order initialized and first item added" };
+        }
+
+        // Check if the item already exists in the order
+        const existingItem = await prisma.order.findFirst({
+            where: {
+                sessionId: sessionId,
+                itemId: itemId,
+            },
+        });
+
+        if (existingItem) {
+          
+            await prisma.order.update({
+                where: {
+                    id: existingItem.id,
+                },
+                data: {
+                    qty: qty,
+                },
+            });
+
+            return { message: "Order item quantity updated" };
+        } else {
+            // Add a new item to the order
+            await prisma.order.create({
+                data: {
+                    sessionId: sessionId,
+                    itemId: itemId,
+                    qty: qty,
+                },
+            });
+
+            return { message: "New item added to the order" };
+        }
+    } catch (error) {
+        console.error("Error handling order:", error);
+        throw error;
+    } 
+};
+
+
+export const fetchOrder = async (sessionId: number) => {
+    const prisma = new PrismaClient();
+
+    try {
+        // Fetch all items and their quantities for the given sessionId
+        const items = await prisma.order.findMany({
+            where: {
+                sessionId: sessionId,
+            },
+            select: {
+                itemId: true,
+                qty: true,
+            },
+        });
+
+        if (items.length === 0) {
+            return { message: "No items found for this session", items: [] };
+        }
+
+        return { message: "Items fetched successfully", items: items };
+    } catch (error) {
+        console.error("Error fetching order items:", error);
+        throw error;
+    } 
+};

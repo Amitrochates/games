@@ -48,13 +48,6 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
     toastShownRef.current = false;
   };
 
-  // useEffect(() => {
-  //   if (time.hours === 0 && time.minutes === 0 && time.seconds === 0 && timerStarted) {
-  //     shadowColor = "shadow-[0_0_2px_rgba(255,165,0,0.6),0_0_20px_rgba(255,165,0,0.4),0_0_30px_rgba(255,165,0,0.3)_inset,0_0_50px_rgba(255,165,0,0.3)_inset]"
-
-  //   }
-  // }, [time, timerStarted]);
-
   useEffect(() => {
     const totalSeconds = time.hours * 3600 + time.minutes * 60 + time.seconds;
     
@@ -149,11 +142,11 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
               </ul>
             </div>
             <div className="p-2 m-2 pl-12 pt-5">
-              <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg
+              {/* <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg
               shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg
               text-sm px-5 py-2.5 text-center me-2 mb-2 " onClick={() => handleBillButtonClick(controllerCount, menuBill, id)}>
                 Bill
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
