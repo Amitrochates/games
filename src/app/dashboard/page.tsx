@@ -11,10 +11,10 @@ export default async function () {
   return (
     <div className="bg-black min-h-screen w-screen">
       <div className="min-h-screen w-full bg-black flex flex-col">
-        <div>
+        {/* <div>
           <TopBar />
-        </div>
-        <div className="flex-grow overflow-auto">
+        </div> */}
+        <div className="flex-grow overflow-auto my-32">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
             {setups.map((setup: { id: number; screenNo: number; systemType: string; }) => (
               <ActivityCard key={setup.id} id={setup.id} number={setup.screenNo} type={setup.systemType} menu={menu} />

@@ -31,7 +31,7 @@ model Menu {
   id          Int      @id @default(autoincrement())
   name        String
   price       Float
-  orders Order[]
+  // orders Order[]
 }
 
 model Session{
@@ -42,14 +42,14 @@ model Session{
   totalAmount Int
   active Boolean @default(false)
   setup       Setup    @relation(fields: [setupId], references: [id])
-  orders Order[]
+  // orders Order[]
 }
 
-model Order{
-  id Int @id @default(autoincrement())
-  sessionId Int
-  itemId Int
-  qty Int @default(0)
-  session Session @relation(fields:[sessionId], references: [id])
-  menu Menu @relation(fields:[itemId], references: [id])
-}
+// model Order{
+//   id Int @id @default(autoincrement())
+//   sessionId Int
+//   itemId Int
+//   qty Int @default(0)
+//   session Session @relation(fields:[sessionId], references: [id])
+//   menu Menu @relation(fields:[itemId], references: [id])
+// }

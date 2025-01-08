@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import GridIllustration from "./grid-illustration";
 import { ChevronRightIcon } from "lucide-react";
+import CTAButton from "./CTAButton";
 
 export const HeroText = () => {
   const textVariants = {
@@ -21,7 +22,7 @@ export const HeroText = () => {
       <>
       <div className="flex w-full justify-center">
     <div>
-      <div className="relative my-20 flex max-w-6xl flex-col items-center px-6 lg:items-start">
+      <div className="relative flex max-w-6xl flex-col items-center px-6 lg:items-start">
         <motion.div
           className="mb-3 flex scale-95 items-center justify-center gap-2"
           initial={{ opacity: 0 }}
@@ -30,18 +31,15 @@ export const HeroText = () => {
             duration: 0.5,
           }}
         >
-          <div className="h-4 w-4 rounded-sm bg-[#f26625] text-center font-mono text-xs font-medium text-white-50 sm:h-5 sm:w-5 sm:rounded-md sm:text-sm">
+          <div className="h-4 w-4 rounded-sm bg-[#ff0000] text-center font-mono text-xs font-medium text-white-50 sm:h-5 sm:w-5 sm:rounded-md sm:text-sm">
             L
           </div>
-          <a
-            href="https://www.ycombinator.com/companies/pearai"
-            target="_blank"
-            rel="noopener noreferrer"
+          <p
             className="flex items-center gap-1 text-xs font-semibold text-black/50 transition-colors hover:text-black/70 dark:text-gray-600 dark:hover:text-gray-500"
           >
             Trusted by Level Max Gaming{" "}
             <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
-          </a>
+          </p>
         </motion.div>
 
         {/* Title */}
@@ -77,21 +75,7 @@ export const HeroText = () => {
           Mangaging your gaming setup has never been easier with custom setups, detailed analytics and beautiful UI
           </p>
         </motion.div>
-        <motion.div
-          className="my-4 max-w-sm text-center sm:my-6 sm:max-w-md lg:text-left"
-          variants={textVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{
-            duration: 0.6,
-            ease: [0.4, 0, 0.2, 1],
-            delay: 0.4,
-          }}
-        >
-          <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
-          Mangaging your gaming setup has never been easier with custom setups, detailed analytics and beautiful UI
-          </p>
-        </motion.div>
+        
 
         {/* Button */}
         <motion.div
@@ -103,9 +87,10 @@ export const HeroText = () => {
             delay: 0.6,
           }}
         >
-          <button>
-            <Link href="/pricing">Download For Free</Link>
-          </button>
+
+          <CTAButton href="/dashboard">
+            Try the Demo
+          </CTAButton>
         </motion.div>
       </div>
     </div>

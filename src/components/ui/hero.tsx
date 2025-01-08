@@ -11,6 +11,7 @@ import SplineScene from "./SplineScene";
 import { AuroraBackground } from "./aurora-background";
 import ResendBackground from "./ResendBackground";
 import { HeroText } from "./HeroText";
+import { DotBackground } from "./dot-background";
 
 export default function Hero() {
   const textVariants = {
@@ -26,13 +27,15 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative">
+      <section className="relative h-screen">
         {/* Background Dots */}
         <div>
-        <AuroraBackground>
+        {/* <AuroraBackground> */}
+        <DotBackground>
           <div className="w-full">
           {/* <div className="absolute inset-0 mx-auto max-w-7xl bg-dot-dark-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-dot-dark-black lg:[mask-image:radial-gradient(ellipse_at_left,transparent_20%,black)]"></div> */}
-            <div className="relative mx-auto max-w-6xl px-6 py-20">
+
+            <div className="relative mx-auto max-w-6xl h-screen px-6 ">
                 <div className="absolute inset-0 w-full">
                   <GridIllustration/>
                 </div>
@@ -56,7 +59,8 @@ export default function Hero() {
                       {/* /* </motion.div> */}
                 </div>
           </div>
-        </AuroraBackground>
+          </DotBackground>
+        {/* </AuroraBackground> */}
         </div>
       </section>
       

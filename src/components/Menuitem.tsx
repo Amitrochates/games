@@ -68,7 +68,7 @@ const handleIncrement = () => {
                            
                             value={counter}
                             readOnly
-                            className="h-5 w-5 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white"
+                            className="h-5 w-5 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-200 focus:outline-none focus:ring-0 dark:text-white"
                             required
                         />
                         <button

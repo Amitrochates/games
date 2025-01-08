@@ -15,7 +15,7 @@ export default function App() {
   <>
   <div className="dark">
   <Hero/> 
-  <Demo/>
+  {/* <Demo/> */}
   </div>
   </>
   )
