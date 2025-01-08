@@ -48,6 +48,13 @@ export const ActivityCard = ({ id, number, type, menu }: { id: number, number: n
     toastShownRef.current = false;
   };
 
+  // useEffect(() => {
+  //   if (time.hours === 0 && time.minutes === 0 && time.seconds === 0 && timerStarted) {
+  //     shadowColor = "shadow-[0_0_2px_rgba(255,165,0,0.6),0_0_20px_rgba(255,165,0,0.4),0_0_30px_rgba(255,165,0,0.3)_inset,0_0_50px_rgba(255,165,0,0.3)_inset]"
+
+  //   }
+  // }, [time, timerStarted]);
+
   useEffect(() => {
     const totalSeconds = time.hours * 3600 + time.minutes * 60 + time.seconds;
     
